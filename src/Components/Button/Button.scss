@@ -7,4 +7,46 @@
     border-top-color: white;
     border-width: 2px;
     border-style: solid;
+    display: flex;
+    align-items: center;
+    font-weight: bold;
+    justify-content: center;
+    &:active{
+        border-right-color: white;
+        border-bottom-color:white;
+        border-left-color: #7b7b7b;
+        border-top-color:#7b7b7b;
+    }
+    &.visible {
+        border-color: #7b7b7b;
+        border-width: 1px;
+    }
+    span {
+        margin-left: 2px;
+        font-size: 12px;
+    }
+    &.value-1{
+        color:blue
+    }
+    &.value-2{
+        color:green
+    }
+    &.value-3{
+        color:red
+    }
+    &.value-4{
+        color:purple
+    }
+    &.value-5{
+        color:maroon
+    }
+    &.value-6{
+        color:turquoise
+    }
+    &.value-7{
+        color:black
+    }
+    &.value-7{
+        color:grey
+    }
 }

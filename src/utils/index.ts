@@ -1,3 +1,5 @@
+
+
 import { CellValue, CellState, Cell } from "../types"
 
 export const generateCells = (): Cell[][] => {
@@ -106,3 +108,4 @@ export const generateCells = (): Cell[][] => {
 
     return cells
 }
+

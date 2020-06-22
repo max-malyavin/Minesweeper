@@ -3,9 +3,9 @@ import './App.scss';
 import NumberDisplay from './Components/NumberPisplay/NumberDisplay';
 import { generateCells } from './utils';
 import Button from './Components/Button/Button';
-import { Faces, Cell, CellState } from './types';
+import { Faces, Cell, CellState, CellValue } from './types';
 import { worker } from 'cluster';
-
+import {openMultipleCells}  from './utils/index';
 const App: React.FC = () => {
 
   const [cells, setCells] = useState<Cell[][]>(generateCells())
@@ -55,6 +55,24 @@ const App: React.FC = () => {
     if(!live) {
       setLive(true)
     }
+    const currentCell = cells[rowParam][colParam]
+    let newCells = cells.slice()
+
+    if([CellState.flagged, CellState.visible].includes(currentCell.state)
+      // currentCell.state == CellState.flagged || currentCell.state == CellState.visible
+      ){
+      return
+    }
+
+    if(currentCell.value == CellValue.bomb){
+    }else if(currentCell.value == CellValue.none){
+      newCells = openMultipleCells(newCells, rowParam, colParam)
+      setCells(newCells)
+    } else {
+      newCells[rowParam][colParam].state = CellState.visible
+      setCells(newCells)
+    }
+
   }
   const handleCellContext = (rowParam:number, colParam:number) => (e: React.MouseEvent<HTMLDivElement, MouseEvent>): void => {
     e.preventDefault()
